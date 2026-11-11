@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #16120f;
+  --color-charcoal: #1a1613;
+  --color-charcoal-soft: #241f1a;
+  --color-charcoal-line: #332c25;
+  --color-cream: #f7f4ee;
+  --color-sand: #efe9df;
+  --color-line: #e4ddd2;
+  --color-muted: #7b7268;
+  --color-ember: #d97742;
+  --color-ember-strong: #b95c2a;
+  --color-ember-soft: #f8e6d9;
+  --color-success: #2f7d5f;
+  --color-danger: #b4392f;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+
+  --shadow-card: 0 1px 2px rgb(22 18 15 / 0.04), 0 12px 28px -18px rgb(22 18 15 / 0.28);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+
+  ::selection {
+    background: var(--color-ember-soft);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 2px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-muted;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-white shadow-card;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-[13px] font-medium text-ink/80;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-line bg-white px-3 py-2.5 text-[15px] text-ink placeholder:text-muted/60 shadow-[inset_0_1px_2px_rgb(22_18_15_/0.04)] transition
+      focus:border-ember focus:outline-none focus:ring-2 focus:ring-ember/20;
+  }
+
+  .field-hint {
+    @apply mt-1 text-xs text-muted;
+  }
+
+  .field-error {
+    @apply mt-1 text-xs font-medium text-danger;
+  }
+
+  .table-base {
+    @apply w-full border-collapse text-left text-sm;
+  }
+
+  .table-base thead th {
+    @apply border-b border-line px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted;
+  }
+
+  .table-base tbody td {
+    @apply border-b border-line/70 px-4 py-3 align-middle;
+  }
+
+  .table-base tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .table-base tbody tr:hover {
+    @apply bg-sand/40;
+  }
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-charcoal-line) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
